@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ORM_Dapper
 {
-    public class DapperDepartmentRepository : IDpertmentRepository
+    public class DapperDepartmentRepository : IDepartmentRepository
     {
         private readonly IDbConnection _conn;
 
@@ -19,13 +19,13 @@ namespace ORM_Dapper
 
         public IEnumerable<Department> GetAllDepartments()
         {
-            return _conn.Query<Department>("SELECT * FROM departments");
+            return _conn.Query<Department>("SELECT * FROM departments;");
         }
 
         public void InsertDepartment(string name)
         {
-            _conn.Execute("INSERT INTO departments (Name) VALUES (@name)",
-                new {name = name});
+            _conn.Execute("INSERT INTO departments (Name) VALUES (@name);",
+                new {name});
         }
     }
 }
